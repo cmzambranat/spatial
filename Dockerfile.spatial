@@ -18,7 +18,6 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   &&  echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \
 ## install from github 
   && installGithub.r -d s-u/unixtools \
-  
 ## Compile R packages
   && install2.r --error --skipinstalled \
   piggyback \
@@ -50,10 +49,7 @@ RUN tlmgr update --self \
 RUN echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \
   && Rscript -e "install.packages('INLA', repos=c(getOption('repos'), INLA='https://inla.r-inla-download.org/R/stable'), dependencies=TRUE, Ncpus = parallel::detectCores())" \
   && rm /usr/local/lib/R/etc/Makevars.site \
-  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages
-
-## Cleanup
-RUN rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages \
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages \
   && ccache -C \
   && unset MAKEFLAGS \
 ## Turn on install parallelism after setup

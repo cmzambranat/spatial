@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --allow-downgrades --allow-remove-essen
     grass \
     grass-dev \
     grass-doc \
-    htop \
+    htop
 
 ### R config and packages
 RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \

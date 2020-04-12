@@ -1,0 +1,61 @@
+FROM rocker/geospatial:latest
+MAINTAINER "Carlos Zambrana-Torrelio" zambrana@ecohealthalliance.org
+## Installs to help install
+RUN apt-get update && apt-get install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages --allow-unauthenticated --no-install-recommends --no-upgrade \
+    curl \
+    libcairo2-dev \
+    libgdal-dev \
+    libproj-dev \
+    libgeos++-dev \
+    grass \
+    grass-dev \
+    grass-doc \
+    htop \
+
+### R config and packages
+RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
+  &&  echo "CXXFLAGS=-w"  >> /usr/local/lib/R/etc/Makevars.site \
+  &&  echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \
+## install from github 
+  && installGithub.r -d s-u/unixtools \
+  
+## Compile R packages
+  && install2.r --error --skipinstalled \
+  piggyback \
+  rgrass7 \
+  ROI \
+  fasterize \
+  rasterVis \
+  here \
+  cowplot \
+  prioritizr \
+  mapmisc \
+  diseasemapping \
+  epimdr \
+  cshapes \
+  letsR \
+  pbapply \
+  stars \
+  landscapemetrics \
+  getlandsat \
+  projects
+
+## Update and install Tex packages
+RUN tlmgr update --self \
+  && tlmgr install seqsplit bigfoot xcolor multirow cases pgf ifoddpage \
+     jknapltx rsfs pxpgfmark subfig marginfix tcolorbox mathtools calrsfs calligra cancel \
+     mathcomp doublestroke anyfontsize kastrup ucs environ trimspaces palatino \
+     mathpazo pdfpages titlesec montserrat lato noto easyformat psnfss mdframed fontawesome fpl fancyhdr lastpage \
+     sectsty needspace wallpaper
+
+RUN echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \
+  && Rscript -e "install.packages('INLA', repos=c(getOption('repos'), INLA='https://inla.r-inla-download.org/R/stable'), dependencies=TRUE, Ncpus = parallel::detectCores())" \
+  && rm /usr/local/lib/R/etc/Makevars.site \
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages
+
+## Cleanup
+RUN rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages \
+  && ccache -C \
+  && unset MAKEFLAGS \
+## Turn on install parallelism after setup
+  && mv -f Makevars.site /usr/local/lib/R/etc/Makevars.site

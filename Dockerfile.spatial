@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y --allow-downgrades --allow-remove-essen
     grass \
     grass-dev \
     grass-doc \
-    htop
+    htop \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/
 
 ### R config and packages
 RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
@@ -36,7 +38,10 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   stars \
   landscapemetrics \
   getlandsat \
-  projects
+  projects \
+  && installGithub.r macroecology/letsR \
+  && installGithub.r ilyamaclean/microclima \
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages \
 
 ## Update and install Tex packages
 RUN tlmgr update --self \
@@ -50,7 +55,5 @@ RUN echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \
   && Rscript -e "install.packages('INLA', repos=c(getOption('repos'), INLA='https://inla.r-inla-download.org/R/stable'), dependencies=TRUE, Ncpus = parallel::detectCores())" \
   && rm /usr/local/lib/R/etc/Makevars.site \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages \
-  && ccache -C \
-  && unset MAKEFLAGS \
 ## Turn on install parallelism after setup
   && mv -f Makevars.site /usr/local/lib/R/etc/Makevars.site

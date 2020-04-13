@@ -57,4 +57,5 @@ RUN tlmgr update --self \
      jknapltx rsfs pxpgfmark subfig marginfix tcolorbox mathtools calrsfs calligra cancel \
      mathcomp doublestroke anyfontsize kastrup ucs environ trimspaces palatino \
      mathpazo pdfpages titlesec montserrat lato noto easyformat psnfss mdframed fontawesome fpl fancyhdr lastpage \
-     sectsty needspace wallpaper
+     sectsty needspace wallpaper \
+  && R -e "update.packages(ask = FALSE)"

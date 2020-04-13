@@ -40,8 +40,15 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   getlandsat \
   projects \
   tidync \
+  patchwork \
+  tmap \
   && installGithub.r macroecology/letsR \
   && installGithub.r ilyamaclean/microclima \
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages
+
+RUN echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \
+  && Rscript -e "install.packages('INLA', repos=c(getOption('repos'), INLA='https://inla.r-inla-download.org/R/stable'), dependencies=TRUE, Ncpus = parallel::detectCores())" \
+  && rm /usr/local/lib/R/etc/Makevars.site \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages
 
 ## Update and install Tex packages
@@ -51,10 +58,3 @@ RUN tlmgr update --self \
      mathcomp doublestroke anyfontsize kastrup ucs environ trimspaces palatino \
      mathpazo pdfpages titlesec montserrat lato noto easyformat psnfss mdframed fontawesome fpl fancyhdr lastpage \
      sectsty needspace wallpaper
-
-RUN echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \
-  && Rscript -e "install.packages('INLA', repos=c(getOption('repos'), INLA='https://inla.r-inla-download.org/R/stable'), dependencies=TRUE, Ncpus = parallel::detectCores())" \
-  && rm /usr/local/lib/R/etc/Makevars.site \
-  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages \
-## Turn on install parallelism after setup
-  && mv -f Makevars.site /usr/local/lib/R/etc/Makevars.site

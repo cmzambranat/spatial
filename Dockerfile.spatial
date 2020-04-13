@@ -39,9 +39,10 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   landscapemetrics \
   getlandsat \
   projects \
+  tidync \
   && installGithub.r macroecology/letsR \
   && installGithub.r ilyamaclean/microclima \
-  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages \
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages
 
 ## Update and install Tex packages
 RUN tlmgr update --self \

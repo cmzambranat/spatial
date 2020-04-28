@@ -47,7 +47,6 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   mapview \
   && installGithub.r macroecology/letsR \
   && installGithub.r ilyamaclean/microclima \
-  && installGithub.r csaybar/rgee \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages
 
 RUN echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \

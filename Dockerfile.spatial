@@ -31,7 +31,6 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   cowplot \
   prioritizr \
   mapmisc \
-  diseasemapping \
   epimdr \
   cshapes \
   pbapply \
@@ -49,7 +48,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   && installGithub.r macroecology/letsR \
   && installGithub.r ilyamaclean/microclima \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages
-  
+
 RUN echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \
   && Rscript -e "install.packages('INLA', repos=c(getOption('repos'), INLA='https://inla.r-inla-download.org/R/stable'), dependencies=TRUE, Ncpus = parallel::detectCores())" \
   && rm /usr/local/lib/R/etc/Makevars.site \

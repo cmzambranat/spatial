@@ -1,24 +1,42 @@
+FROM python:3.7-buster
 FROM rocker/geospatial:latest
 MAINTAINER "Carlos Zambrana-Torrelio" zambrana@ecohealthalliance.org
+
 ## Installs to help install
 RUN apt-get update && apt-get install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages --allow-unauthenticated --no-install-recommends --no-upgrade \
-    curl \
-    libcairo2-dev \
-    libgdal-dev \
-    libproj-dev \
-    libgeos++-dev \
-    grass \
-    grass-dev \
-    grass-doc \
-    htop \
+    curl libcairo2-dev libgdal-dev libproj-dev libgeos++-dev \
+    grass grass-dev grass-doc htop \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/
+
+## Packages for earthengine api
+RUN apt install -y libudunits2-dev libgeos-dev libproj-dev \
+                    libnode-dev libjq-dev libnetcdf-dev libjson-c-dev \
+                    libprotobuf-dev protobuf-compiler unixodbc-dev liblwgeom-dev \
+                    libssl-dev \
+                    && apt-get clean \
+                    && rm -rf /var/lib/apt/lists/
+RUN apt update
+
+RUN apt-get install -y python3-pip python3-dev
+
+RUN  pip3 install pyasn1 --upgrade
+
+RUN pip3 install coveralls oauth2client \
+  numpy earthengine-api virtualenv
+
+## Intalling reticualte an rgee on R
+RUN  Rscript -e "remotes::install_github('rstudio/reticulate')"
+RUN  Rscript -e "remotes::install_github('csaybar/rgee')"
+
+RUN  mkdir -p /home/rstudio/.config/earthengine/ && \
+     echo 'RETICULATE_PYTHON=/usr/bin/python3' > /home/rstudio/.Renviron
 
 ### R config and packages
 RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   &&  echo "CXXFLAGS=-w"  >> /usr/local/lib/R/etc/Makevars.site \
   &&  echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \
-## install from github 
+## install from github
   && installGithub.r -d s-u/unixtools \
 ## Compile R packages
   && install2.r --error --skipinstalled \

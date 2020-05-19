@@ -30,14 +30,15 @@ services:
     volumes:
       - "/Users/uyuni/repos:/home/rstudio/repos"
       #- "/var/run/docker.sock:/var/run/docker.sock"
+      - "/Users/uyuni/.config/earthengine:/home/rstudio/.config/earthengine"
     restart: always
     hostname: spatial
-    
-    
-  
+
+
+
 
 #  netdata:
-#    image: titpetric/netdata  
+#    image: titpetric/netdata
 #    cap_add:
 #      - SYS_PTRACE
 #    volumes:

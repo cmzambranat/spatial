@@ -22,29 +22,30 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   && installGithub.r -d s-u/unixtools \
 ## Compile R packages
   && install2.r --error --skipinstalled \
-  piggyback \
-  rgrass7 \
-  ROI \
-  fasterize \
-  rasterVis \
-  here \
-  cowplot \
-  prioritizr \
-  mapmisc \
-  epimdr \
-  cshapes \
-  pbapply \
-  stars \
-  landscapemetrics \
-  getlandsat \
-  projects \
-  tidync \
-  patchwork \
-  tmap \
-  terra \
   classInt \
+  cowplot \
+  cshapes \
+  epimdr \
+  fasterize \
+  here \
+  getlandsat \
+  landscapemetrics \
+  mapmisc \
   mapview \
+  NetLogoR \
+  patchwork \
+  pbapply \
+  piggyback \
+  prioritizr \
+  projects \
+  rasterVis \
+  rgrass7 \
   red \
+  ROI \
+  stars \
+  terra \
+  tidync \
+  tmap \
   && installGithub.r macroecology/letsR \
   && installGithub.r ilyamaclean/microclima \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages

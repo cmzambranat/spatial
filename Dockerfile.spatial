@@ -29,6 +29,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   fasterize \
   here \
   getlandsat \
+  iNEXT \
   landscapemetrics \
   mapmisc \
   mapview \

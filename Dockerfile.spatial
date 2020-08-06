@@ -30,7 +30,9 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   here \
   getlandsat \
   iNEXT \
+  janitor \
   landscapemetrics \
+  lemon \
   mapmisc \
   mapview \
   NetLogoR \
@@ -41,10 +43,11 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   projects \
   rasterVis \
   rgrass7 \
-  rGEDI
+  rGEDI \
   red \
   ROI \
   stars \
+  styler \
   terra \
   tidync \
   tmap \

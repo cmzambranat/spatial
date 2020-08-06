@@ -41,6 +41,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   projects \
   rasterVis \
   rgrass7 \
+  rGEDI
   red \
   ROI \
   stars \

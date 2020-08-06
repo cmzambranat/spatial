@@ -25,10 +25,12 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   classInt \
   cowplot \
   cshapes \
+  countrycode \
   epimdr \
   fasterize \
   here \
   getlandsat \
+  ggrepel \
   iNEXT \
   janitor \
   landscapemetrics \
@@ -41,11 +43,13 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   piggyback \
   prioritizr \
   projects \
+  rangeBuilder \
   rasterVis \
   rgrass7 \
   rGEDI \
   red \
   ROI \
+  scales \
   stars \
   styler \
   terra \

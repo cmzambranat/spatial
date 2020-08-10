@@ -22,6 +22,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   && installGithub.r -d s-u/unixtools \
 ## Compile R packages
   && install2.r --error --skipinstalled \
+  adehabitatHR \
   classInt \
   cowplot \
   cshapes \
@@ -31,10 +32,13 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   here \
   getlandsat \
   ggrepel \
+  ggforce \
+  gtsummary \
   iNEXT \
   janitor \
   landscapemetrics \
   lemon \
+  leafpop \
   mapmisc \
   mapview \
   NetLogoR \
@@ -45,6 +49,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   projects \
   rangeBuilder \
   rasterVis \
+  RNCEP \
   rgrass7 \
   rGEDI \
   red \
@@ -52,6 +57,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   scales \
   stars \
   styler \
+  taxadb \
   terra \
   tidync \
   tmap \

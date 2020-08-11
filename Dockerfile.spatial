@@ -20,6 +20,9 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   &&  echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \
 ## install from github 
   && installGithub.r -d s-u/unixtools \
+  && installGithub.r PredictiveEcology/Require \
+  && installGithub.r PredictiveEcology/reproducible \
+
 ## Compile R packages
   && install2.r --error --skipinstalled \
   adehabitatHR \
@@ -52,7 +55,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   rasterVis \
   RNCEP \
   rgrass7 \
-  rGEDI \
+  #rGEDI \
   red \
   ROI \
   scales \
@@ -65,8 +68,6 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   tmap \
   && installGithub.r macroecology/letsR \
   && installGithub.r ilyamaclean/microclima \
-  && installGithub.r PredictiveEcology/Require \
-  && installGithub.r PredictiveEcology/reproducible \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages
 
 RUN echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \

@@ -52,7 +52,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   rasterVis \
   RNCEP \
   rgrass7 \
-  rGEDI \
+  #rGEDI \
   red \
   ROI \
   scales \

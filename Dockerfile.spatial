@@ -31,7 +31,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   cshapes \
   countrycode \
   epimdr \
-  fastshp \
+  #fastshp \
   fasterize \
   here \
   getlandsat \
@@ -55,7 +55,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   rasterVis \
   RNCEP \
   rgrass7 \
-  #rGEDI \
+  rGEDI \
   red \
   ROI \
   scales \

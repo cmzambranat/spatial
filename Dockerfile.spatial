@@ -28,6 +28,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   cshapes \
   countrycode \
   epimdr \
+  fastshp \
   fasterize \
   here \
   getlandsat \
@@ -55,6 +56,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   red \
   ROI \
   scales \
+  SpaDES \
   stars \
   styler \
   taxadb \

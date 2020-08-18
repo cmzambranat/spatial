@@ -56,6 +56,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   RNCEP \
   rgrass7 \
   rGEDI \
+  rfigshare \
   red \
   ROI \
   scales \
@@ -66,7 +67,6 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   terra \
   tidync \
   tmap \
-  && R -e "devtools::install_github('rfigshare', 'ropensci')" \
   && installGithub.r macroecology/letsR \
   && installGithub.r ilyamaclean/microclima \
   && installGithub.r azvoleff/gfcanalysis \

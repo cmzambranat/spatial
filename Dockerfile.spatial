@@ -14,23 +14,34 @@ RUN apt-get update && apt-get install -y --allow-downgrades --allow-remove-essen
     htop \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/
-
 ### R config and packages
 RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   &&  echo "CXXFLAGS=-w"  >> /usr/local/lib/R/etc/Makevars.site \
   &&  echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \
 ## install from github 
   && installGithub.r -d s-u/unixtools \
+  && installGithub.r PredictiveEcology/Require \
+  && installGithub.r PredictiveEcology/reproducible \
 ## Compile R packages
   && install2.r --error --skipinstalled \
+  adehabitatHR \
   classInt \
   cowplot \
   cshapes \
+  countrycode \
   epimdr \
+  #fastshp \
   fasterize \
   here \
   getlandsat \
+  ggrepel \
+  ggforce \
+  gtsummary \
+  iNEXT \
+  janitor \
   landscapemetrics \
+  lemon \
+  leafpop \
   mapmisc \
   mapview \
   NetLogoR \
@@ -39,29 +50,31 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   piggyback \
   prioritizr \
   projects \
+  rangeBuilder \
   rasterVis \
+  rdryad \
+  RNCEP \
   rgrass7 \
+  rGEDI \
+  rfigshare \
   red \
   ROI \
+  scales \
+  SpaDES \
   stars \
+  styler \
+  suppdata \
+  taxadb \
   terra \
   tidync \
   tmap \
   && installGithub.r macroecology/letsR \
   && installGithub.r ilyamaclean/microclima \
+  && installGithub.r azvoleff/gfcanalysis \
+  && installGithub.r inbo/inborutils \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages
-
 RUN echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \
   && Rscript -e "install.packages('INLA', repos=c(getOption('repos'), INLA='https://inla.r-inla-download.org/R/stable'), dependencies=TRUE, Ncpus = parallel::detectCores())" \
   && rm /usr/local/lib/R/etc/Makevars.site \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages \
-  && chmod -R ugo+rw /opt/TinyTeX/
-
-## Update and install Tex packages
-RUN tlmgr update --self \
-  && tlmgr install seqsplit bigfoot xcolor multirow cases pgf ifoddpage \
-     jknapltx rsfs pxpgfmark subfig marginfix tcolorbox mathtools calrsfs calligra cancel \
-     mathcomp doublestroke anyfontsize kastrup ucs environ trimspaces palatino \
-     mathpazo pdfpages titlesec montserrat lato noto easyformat psnfss mdframed fontawesome fpl fancyhdr lastpage \
-     sectsty needspace wallpaper \
   && R -e "update.packages(ask = FALSE)"

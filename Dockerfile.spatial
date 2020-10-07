@@ -38,7 +38,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   ggrepel \
   ggforce \
   gtsummary \
-  iNEXT \
+  ggthemes \
   janitor \
   landscapemetrics \
   lemon \
@@ -56,6 +56,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   rdryad \
   RNCEP \
   rgrass7 \
+  rgee \
   rGEDI \
   rfigshare \
   red \

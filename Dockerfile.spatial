@@ -73,7 +73,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   && installGithub.r ilyamaclean/microclima \
   && installGithub.r azvoleff/gfcanalysis \
   && installGithub.r inbo/inborutils \
-  && installGithub.r r-spatial/rgee
+  && installGithub.r r-spatial/rgee \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages
 RUN echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \
   && Rscript -e "install.packages('INLA', repos=c(getOption('repos'), INLA='https://inla.r-inla-download.org/R/stable'), dependencies=TRUE, Ncpus = parallel::detectCores())" \

@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y --allow-downgrades --allow-remove-essen
     python3.8 \
     python3.8-dev \
     curl \
+    libarchive-dev \
     libcairo2-dev \
     libgdal-dev \
     libproj-dev \

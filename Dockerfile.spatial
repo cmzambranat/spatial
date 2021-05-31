@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y --allow-downgrades --allow-remove-essen
     grass-doc \
     htop \
     wget \
-  && RSTUDIO_URL="https://s3.amazonaws.com/rstudio-ide-build/server/bionic/amd64/rstudio-server-1.4.904-amd64.deb" \
+  && RSTUDIO_URL="https://s3.amazonaws.com/rstudio-ide-build/server/bionic/amd64/rstudio-server-1.4.1717-amd64.deb" \
   && wget -q $RSTUDIO_URL \
   && dpkg -i rstudio-server-*-amd64.deb \
   && rm rstudio-server-*-amd64.deb \
@@ -63,7 +63,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   mapview \
   mobr \
   mobsim \
-  NetLogoR \
+##NetLogoR \
   patchwork \
   pbapply \
   piggyback \
@@ -79,7 +79,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   red \
   ROI \
   scales \
-  SpaDES \
+##SpaDES \
   stars \
   styler \
   suppdata \

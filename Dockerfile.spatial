@@ -79,6 +79,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   red \
   ROI \
   scales \
+  sf \
   shinyjs \
   SpaDES \
   stars \

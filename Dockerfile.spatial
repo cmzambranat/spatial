@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y --allow-downgrades --allow-remove-essen
     libproj-dev \
     libgeos++-dev \
     libsecret-1-dev \
+    libudunits2-dev \
     grass \
     grass-dev \
     grass-doc \
@@ -79,7 +80,6 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   red \
   ROI \
   scales \
-  sf \
   shinyjs \
   SpaDES \
   stars \

@@ -54,11 +54,13 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   ggthemes \
   ggtext \
   googledrive \
+  googleway \
   janitor \
   landscapemetrics \
   lemon \
   leaflet \
   leafpop \
+  libwgeom \
   lulcc \
   mapmisc \
   mapview \
@@ -77,6 +79,8 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   rgrass7 \
   rGEDI \
   rfigshare \
+  rnaturalearth \
+  rnaturalearthdata \
   red \
   ROI \
   scales \

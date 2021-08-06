@@ -45,11 +45,13 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   #fastshp \
   fasterize \
   here \
+  gdalUtils \
   getlandsat \
   ggrepel \
   ggforce \
   gtsummary \
   ggmap \
+  ggpmisc \
   ggspatial \
   ggthemes \
   ggtext \
@@ -100,7 +102,8 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   && installGithub.r jimhester/archive \
   && installGithub.r PredictiveEcology/NetLogoR \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages
-COPY rstudio-prefs.json .config/rstudio
+#COPY rstudio-prefs.json .config/rstudio
+COPY user-settings /home/rstudio/.rstudio/monitored/user-settings/user-settings
 
 RUN echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \
   && Rscript -e "install.packages('INLA', repos=c(getOption('repos'), INLA='https://inla.r-inla-download.org/R/stable'), dependencies=TRUE, Ncpus = parallel::detectCores())" \

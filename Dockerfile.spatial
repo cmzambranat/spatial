@@ -1,4 +1,4 @@
-FROM rocker/geospatial:4.0.4
+FROM rocker/geospatial:4.1.0
 MAINTAINER "Carlos Zambrana-Torrelio" zambrana@ecohealthalliance.org
 ## Installs to help install
 RUN apt-get update && apt-get install -y --allow-downgrades --allow-remove-essential --allow-change-held-packages --allow-unauthenticated --no-install-recommends --no-upgrade \
@@ -62,7 +62,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   lemon \
   leaflet \
   leafpop \
-  libwgeom \
+#libwgeom \
   lulcc \
   mapmisc \
   mapview \

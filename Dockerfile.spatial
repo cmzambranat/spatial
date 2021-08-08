@@ -103,7 +103,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   && installGithub.r jimhester/archive \
   && installGithub.r PredictiveEcology/NetLogoR \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages
-COPY rstudio-prefs.json ~/.config/rstudio
+COPY rstudio-prefs.json ~/.config/rstudio/rstudio-prefs.json
 #COPY user-settings /home/rstudio/.rstudio/monitored/user-settings/user-settings
 #COPY user-settings /.local/share/rstudio/monitored/user-settings
 

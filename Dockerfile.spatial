@@ -99,7 +99,6 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   && installGithub.r macroecology/letsR \
   && installGithub.r ilyamaclean/microclima \
   && installGithub.r azvoleff/gfcanalysis \
-  && installGithub.r inbo/inborutils \
   && installGithub.r jimhester/archive \
   && installGithub.r PredictiveEcology/NetLogoR \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages
@@ -108,6 +107,4 @@ RUN echo "MAKEFLAGS=-j$(nproc)"  >> /usr/local/lib/R/etc/Makevars.site \
   && rm /usr/local/lib/R/etc/Makevars.site \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds /root/tmp/downloaded_packages \
   && R -e "update.packages(ask = FALSE)" 
-COPY rstudio-prefs.json /home/rstudio/.config/rstudio/
-#COPY user-settings /home/rstudio/.rstudio/monitored/user-settings/user-settings
-#COPY user-settings /.local/share/rstudio/monitored/user-settings
+COPY rstudio-prefs.json /home/rstudio/.config/rstudio/rstudio-prefs.json

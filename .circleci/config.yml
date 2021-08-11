@@ -7,7 +7,7 @@ jobs:
      - run:
            name: "Build Spatial Container"
            command: |
-            docker build -f Dockerfile.spatial -t cmzambranat/spatial .
+            docker build -f Dockerfile.spatial -t cmzambranat/spatial:4.1.0 .
      - deploy:
            name: "Push to Docker Hub"
            command: |

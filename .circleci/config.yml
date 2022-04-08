@@ -3,6 +3,7 @@ jobs:
  spatial:
    machine: true
    resource_class: large
+   parallelism: 4
    steps:
      - checkout
      - run:

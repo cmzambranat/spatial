@@ -68,7 +68,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   mapmisc \
   mapview \
   mobr \
-  mobsim \
+  #mobsim \
   #NetLogoR \
   patchwork \
   pbapply \
@@ -80,7 +80,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   rdryad \
   RNCEP \
   rgrass7 \
-  rGEDI \
+  #rGEDI \
   rfigshare \
   rnaturalearth \
   rnaturalearthdata \

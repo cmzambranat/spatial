@@ -1,7 +1,7 @@
 version: 2
 jobs:
  spatial:
-   machine: true
+   machine: ubuntu-2004:202111-02
    resource_class: large
    parallelism: 4
    steps:

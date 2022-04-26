@@ -46,7 +46,7 @@ RUN echo "CFLAGS=-w" >> /usr/local/lib/R/etc/Makevars.site \
   fasterize \
   fs \
   here \
-  gdalUtils \
+  #gdalUtils \
   getlandsat \
   ggrepel \
   ggforce \
